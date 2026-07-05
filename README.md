@@ -23,7 +23,7 @@
   </tr>
 </table>
 
-This repository contains a modified version of a research project focused on community detection in complex networks using **Simulated Annealing (SA)**. The project includes the core implementation of the algorithm, scripts for testing against synthetic networks (Stochastic Block Models), and applications to real-world networks (social networks, power grids, and brain connectivity).
+This repository contains a research project focused on community detection in complex networks using **Simulated Annealing (SA)**. The project includes the core implementation of the algorithm, scripts for testing against synthetic networks (Stochastic Block Models), and applications to real-world networks (social networks, power grids, and brain connectivity).
 
 ## Requirements and Installation
 
@@ -57,7 +57,7 @@ This project requires a standard Python environment with scientific computing li
 
 ## Overview of the Project
 
-This project aims to implement and apply a community detection algorithm based on **Simulated Annealing (SA)**. The modularity function $Q$ is optimized dynamically, allowing the algorithm to find the optimal number of communities without pre-fixing it.
+This project aims to implement and apply a community detection algorithm based on **Simulated Annealing (SA)**. The modularity function $Q$ (see *M. E. J. Newman, Equivalence between modularity optimization and maximum likelihood methods for community detection, 94, 052315*) is optimized dynamically, allowing the algorithm to find the optimal number of communities without pre-fixing it.
 
 A detailed article (in Spanish) with full explanations of the mathematical framework, algorithm derivations, and experimental results is available in **`project.pdf`**. The work was co-authored by Adriana Navarrete Campillo.
 
@@ -65,7 +65,7 @@ The repository is structured as follows:
 
 - **`moduleNX.py`**: Core engine implementing the SA algorithm with Numba-accelerated routines.
 - **`3_4_SA_figures.py`**: Generates network visualizations of Synthetic Block Models (SBM) with varying fractions of inter-community edges ($k_{out}/k$).
-- **`3_4_SA_guimera.py`**: Performance evaluation of SA against the Girvan–Newman benchmark, measuring normalized mutual information (NMI) as a function of $k_{out}/k$. See FIG. 1 in "R. Guimerà and L. A. Nunes Amaral, Functional cartography of complex metabolic networks, 433, 895".
+- **`3_4_SA_guimera.py`**: Performance evaluation of SA against the Girvan–Newman benchmark, measuring normalized mutual information (NMI) as a function of $k_{out}/k$. See FIG. 1 in *R. Guimerà and L. A. Nunes Amaral, Functional cartography of complex metabolic networks, 433, 895*.
 - **`3_5_SA_realNets.py`**: Applies the SA algorithm to three real-world networks: Dolphins (social), American college football, and the Western US power grid.
 - **`4_brain.py`**: Application to structural brain connectivity matrices (88 healthy subjects from the AAL atlas), analyzing community structure at different resolution levels.
 - **`5_gamma_zachary.py`**: Resolution-parameter sweep ($\gamma$) on Zachary's Karate Club network, tracking the number of communities and modularity as $\gamma$ varies.
