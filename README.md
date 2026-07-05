@@ -1,10 +1,27 @@
 # Complex Network Community Detection
 
-<p align="center">
-  <img src="guimera.png" alt="SBM performance" width="280"/>
-  <img src="zachary.png" alt="Zachary Karate Club" width="280"/>
-  <img src="brain.png" alt="Brain connectivity" width="280"/>
-</p>
+<table align="center">
+  <tr>
+    <th align="center">SA vs. GN Performance under SBM</th>
+    <th align="center">Brain Connectivity</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="guimera.png" alt="SBM performance" width="420" height="260">
+    </td>
+    <td align="center">
+      <img src="brain.png" alt="Brain connectivity" width="330" height="260">
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2" align="center">Zachary Karate Club</th>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="zachary.png" alt="Zachary Karate Club" width="840">
+    </td>
+  </tr>
+</table>
 
 This repository contains a modified version of a research project focused on community detection in complex networks using **Simulated Annealing (SA)**. The project includes the core implementation of the algorithm, scripts for testing against synthetic networks (Stochastic Block Models), and applications to real-world networks (social networks, power grids, and brain connectivity).
 
@@ -71,7 +88,7 @@ Key components include:
 This project uses **Simulated Annealing** to optimize the modularity function $Q$ and detect community structures dynamically.
 
 #### State Representation
-The system state is represented by a partition vector $\bm{c} \in \mathbb{N}^N$, where $c_i \in \{0, 1, \dots, M-1\}$ denotes the community to which node $i$ belongs. The number of communities $M$ is not fixed and varies dynamically during optimization.
+The system state is represented by a partition vector $\boldsymbol{c} \in \mathbb{N}^N$, where $c_i \in \{0, 1, \dots, M-1\}$ denotes the community to which node $i$ belongs. The number of communities $M$ is not fixed and varies dynamically during optimization.
 
 To avoid redundant representations, the vector is maintained in **canonical form**:
 1.  Community labels are assigned in order of first appearance.
@@ -82,7 +99,7 @@ An index $m_\emptyset$ points to the first available empty label, allowing the a
 
 #### Optimized Data Structures
 To ensure efficiency during the computationally expensive optimization process, we maintain:
-*   **Occurrence Vector ($\bm{\sigma}$):** $\sigma_m$ tracks the number of nodes currently assigned to community $m$.
+*   **Occurrence Vector ($\boldsymbol{\sigma}$):** $\sigma_m$ tracks the number of nodes currently assigned to community $m$.
 *   **Degree Vector ($K_{inn,m}$):** Defined as $K_{inn,m} = \sum_{i \in C_m} k_i$, it accumulates the sum of the degrees of nodes in community $m$. This is crucial for efficient evaluation of the modularity change ($\Delta Q$).
 
 #### Optimization Process
@@ -93,9 +110,17 @@ In each iteration:
 
 #### Modularity Change Calculation ($\Delta Q$)
 The modularity is defined as:
-$$Q(\bm{c}; \gamma) = \sum_{m=1}^{M} \left[ \frac{K_{mm}}{K} - \gamma \left( \frac{K_{inn,m}}{2K} \right)^2 \right]$$
+
+$$
+Q(\boldsymbol{c}; \gamma) = \sum_{m=1}^{M} \left[ \frac{K_{mm}}{K} - \gamma \left( \frac{K_{inn,m}}{2K} \right)^2 \right]
+$$
+
 Where $K_{mm}$ is the number of connections between nodes within community $C_m$, and $K_{inn,m}$ is the sum of degrees of all nodes in $C_m$.
 
 The change in modularity ($\Delta Q$) associated with the proposed transfer $c_l = m_i \rightarrow m_j$ is efficiently calculated as:
-$$\Delta Q = \frac{k_{l \to m_j} - k_{l \to m_i}}{K} - \gamma \frac{k_l (k_l + K_{m_j} - K_{m_i})}{2K^2}$$
-*(Where $k_l$ is the degree of node $l$ and $k_{l \to m}$ is the number of edges connecting node $l$ to community $m$)*.
+
+$$
+\Delta Q = \frac{k_{l \to m_j} - k_{l \to m_i}}{K} - \gamma \frac{k_l (k_l + K_{m_j} - K_{m_i})}{2K^2}
+$$
+
+(Where $k_l$ is the degree of node $l$ and $k_{l \to m}$ is the number of edges connecting node $l$ to community $m$).
