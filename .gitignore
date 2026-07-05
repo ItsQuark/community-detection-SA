@@ -1,0 +1,15 @@
+# Byte-compiled
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Old notes
+readme.txt
+
+# PDFs converted to PNG (PNGs are used in README)
+guimera.pdf
+zachary.pdf
+brain.pdf
