@@ -25,6 +25,8 @@
 
 This repository contains a research project focused on community detection in complex networks using **Simulated Annealing (SA)**. The project includes the core implementation of the algorithm, scripts for testing against synthetic networks (Stochastic Block Models), and applications to real-world networks (social networks, power grids, and brain connectivity).
 
+A detailed article (in Spanish) with full explanations of the mathematical framework, algorithm derivations, and experimental results is available in **`project.pdf`** (click [here](project.pdf)). The work was co-authored by Adriana Navarrete Campillo.
+
 ## Requirements and Installation
 
 This project requires a standard Python environment with scientific computing libraries.
@@ -58,8 +60,6 @@ This project requires a standard Python environment with scientific computing li
 ## Overview of the Project
 
 This project aims to implement and apply a community detection algorithm based on **Simulated Annealing (SA)**. The modularity function $Q$ (see *M. E. J. Newman, Equivalence between modularity optimization and maximum likelihood methods for community detection, 94, 052315*) is optimized dynamically, allowing the algorithm to find the optimal number of communities without pre-fixing it.
-
-A detailed article (in Spanish) with full explanations of the mathematical framework, algorithm derivations, and experimental results is available in **`project.pdf`**. The work was co-authored by Adriana Navarrete Campillo.
 
 The repository is structured as follows:
 
